@@ -63,7 +63,7 @@ function App() {
 
   useEffect(() => {
     if (!userName) {
-      const enteredName = prompt("Please enter your name:");
+      const enteredName = prompt("Sisestage nimi");
       if (enteredName) {
         setUserName(enteredName);
       }
@@ -88,12 +88,12 @@ function App() {
     setTimeout(() => {
       if (currentQuestion + 1 < questions.length) {
         setCurrentQuestion(currentQuestion + 1);
-        setSelectedAnswer(null); // Reset selected answer after moving to the next question
+        setSelectedAnswer(null); 
         setAnswerFeedback("");
       } else {
         setShowResults(true);
       }
-    }, 1000); // You can adjust the delay time (in milliseconds) as needed
+    }, 1000); 
   };
 
   /* Resets the game back to default */
