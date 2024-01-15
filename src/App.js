@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import ResultsTable from "./components/ResultsTable";
 
 function App() {
   // Properties
@@ -9,6 +10,8 @@ function App() {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [answerFeedback, setAnswerFeedback] = useState("");
   const [userName, setUserName] = useState("");
+  const [userAnswers, setUserAnswers] = useState([]);
+
 
 
 
@@ -82,18 +85,24 @@ function App() {
       setAnswerFeedback("Wrong!");
     }
 
+    setUserAnswers((prevAnswers) => {
+      const updatedAnswers = [...prevAnswers];
+      updatedAnswers[currentQuestion] = isCorrect;
+      return updatedAnswers;
+    });
+
     setSelectedAnswer({ optionId, isCorrect });
 
     // Delay moving to the next question to allow time for feedback
     setTimeout(() => {
       if (currentQuestion + 1 < questions.length) {
         setCurrentQuestion(currentQuestion + 1);
-        setSelectedAnswer(null); 
+        setSelectedAnswer(null); // Reset selected answer after moving to the next question
         setAnswerFeedback("");
       } else {
         setShowResults(true);
       }
-    }, 1000); 
+    }, 1000); // You can adjust the delay time (in milliseconds) as needed
   };
 
   /* Resets the game back to default */
@@ -123,10 +132,12 @@ function App() {
         <div className="final-results">
           <h1>Reusltaat</h1>
           <h2>
-          {userName}, teie skoor on {score}, maksimum õigete vastuste arv  on {questions.length}  - (
+          {userName}, teie skoor on {score}. <br /> Maksimum õigete vastuste arv  on  {questions.length}.  - (
             {(score / questions.length) * 100}%)
           </h2>
           <button onClick={() => restartGame()}>Uus mäng</button>
+          <ResultsTable questions={questions} userAnswers={userAnswers} />
+
         </div>
       ) : (
         /* 5. Question Card  */
