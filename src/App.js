@@ -80,9 +80,9 @@ function App() {
     // Increment the score
     if (isCorrect) {
       setScore(score + 1);
-      setAnswerFeedback("Correct!");
+      setAnswerFeedback("{[Õige]}!");
     } else {
-      setAnswerFeedback("Wrong!");
+      setAnswerFeedback("Vale!");
     }
 
     setUserAnswers((prevAnswers) => {
@@ -120,7 +120,7 @@ function App() {
       {/* 1. Header  */}
       {/* Black header with white text */}
       <header className="header">
-      <h1 className="header-text">🇪🇪 Eesti viktoriin 🇪🇪</h1>
+      <h1 className="header-text"> Eesti viktoriin </h1>
     </header>
 
       {/* 2. Current Score  */}
