@@ -1,7 +1,7 @@
 # Eesti Quizz (ReactJS)
 
 Viktoriin eesti kohta mis koosneb viiest küsimusest.
-Mäng küsib teie nime ja siis esitab küsimuusi Eesti kohta.
+Mäng küsib teie nime ja siis esitab küsimusi Eesti kohta.
 Mäng teavitab, kas vastus oli õige või vale.
 
 ## Instlleerimine
